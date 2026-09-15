@@ -29,10 +29,17 @@ function isCurrentSection(item: NavItem, pathname: string) {
   return !!item.megaMenu?.columns.some((col) => col.children.some((child) => matches(child.href)));
 }
 
-/** Frosted-translucent at every scroll position (never fully opaque, never
- * hides), matching the measured FINWIWO header: ~91px rest / ~60px
- * scrolled, threshold ~32px, shadow gained only once scrolled. Values from
- * docs/finwiwo-architecture/navigation.md §1/§6.
+/** Transparent at rest, frosted once it matters: the bar is see-through at
+ * the top of the page and turns frosted white (`bg-white/77` + blur) once the
+ * page scrolls past ~32px or a dropdown opens, gaining its shadow only when
+ * scrolled. Geometry as measured on FINWIWO: ~91px rest / ~60px scrolled
+ * (docs/finwiwo-architecture/navigation.md §1/§6).
+ *
+ * On the homepage the resting bar sits over dark hero photography, so it
+ * switches to a light tone (`data-tone="light"`): white logo, white links and
+ * menu icon, over a soft top gradient that keeps them legible even where a
+ * photo is bright. Other pages start their content below the bar on a light
+ * surface and keep the dark tone.
  *
  * Desktop nav states are deliberately separate (styles in globals.css):
  *  - default: ink-soft
@@ -55,6 +62,9 @@ export function Header() {
     setPrevPathname(pathname);
     setActiveItem(null);
   }
+
+  const solid = compact || activeItem !== null;
+  const onDark = pathname === "/" && !solid;
 
   const clearTimers = useCallback(() => {
     if (openTimer.current) clearTimeout(openTimer.current);
@@ -106,17 +116,29 @@ export function Header() {
   return (
     <>
       <header
+        data-tone={onDark ? "light" : undefined}
         className={cn(
-          "fixed inset-x-0 top-0 z-50 bg-white/[0.77] backdrop-blur-md transition-[box-shadow,padding] duration-300 ease-[var(--ease-motion-small)]",
+          "fixed inset-x-0 top-0 z-50 transition-[background-color,box-shadow,backdrop-filter] duration-300 ease-[var(--ease-motion-small)]",
+          solid ? "bg-white/[0.77] backdrop-blur-md" : "bg-transparent",
           compact ? "shadow-[0_0_3px_rgba(26,20,32,0.22)]" : "shadow-none"
         )}
         // Anchors the header during page transitions (see globals.css):
         // only the page content moves, never the navigation.
         style={{ viewTransitionName: "site-header" }}
       >
+        {/* Legibility gradient for the light tone over bright photography;
+            reaches slightly past the bar and never takes pointer events. */}
+        <div
+          aria-hidden
+          className={cn(
+            "pointer-events-none absolute inset-x-0 top-0 h-[112px] bg-gradient-to-b from-dark/45 via-dark/15 to-transparent transition-opacity duration-300 ease-[var(--ease-motion-small)] lg:h-[150px]",
+            onDark ? "opacity-100" : "opacity-0"
+          )}
+        />
+
         <div
           className={cn(
-            "mx-auto flex w-full max-w-[1440px] items-center justify-between gap-6 px-6 py-[11px] transition-[padding] duration-300 ease-[var(--ease-motion-small)] sm:px-8 lg:px-[60px]",
+            "relative mx-auto flex w-full max-w-[1440px] items-center justify-between gap-6 px-6 py-[11px] transition-[padding] duration-300 ease-[var(--ease-motion-small)] sm:px-8 lg:px-[60px]",
             compact ? "lg:py-[9px]" : "lg:py-[25px]"
           )}
         >
@@ -134,7 +156,22 @@ export function Header() {
               width={168}
               height={35}
               priority
-              className="h-full w-full object-contain object-left"
+              className={cn(
+                "h-full w-full object-contain object-left transition-opacity duration-300",
+                onDark ? "opacity-0" : "opacity-100"
+              )}
+            />
+            <Image
+              src="/images/logo-white.png"
+              alt=""
+              aria-hidden
+              width={1672}
+              height={275}
+              priority
+              className={cn(
+                "absolute inset-0 h-full w-full object-contain object-left transition-opacity duration-300",
+                onDark ? "opacity-100" : "opacity-0"
+              )}
             />
           </Link>
 
@@ -226,24 +263,16 @@ export function Header() {
               onClick={() => setMobileOpen((v) => !v)}
               className="relative flex h-6 w-6 shrink-0 flex-col items-center justify-center gap-[4.5px] min-[1180px]:hidden"
             >
-              <span
-                className={cn(
-                  "h-[1.5px] w-[19px] bg-ink transition-all duration-300",
-                  mobileOpen && "opacity-0"
-                )}
-              />
-              <span
-                className={cn(
-                  "h-[1.5px] w-[19px] bg-ink transition-all duration-300",
-                  mobileOpen && "opacity-0"
-                )}
-              />
-              <span
-                className={cn(
-                  "h-[1.5px] w-[19px] bg-ink transition-all duration-300",
-                  mobileOpen && "opacity-0"
-                )}
-              />
+              {[0, 1, 2].map((bar) => (
+                <span
+                  key={bar}
+                  className={cn(
+                    "h-[1.5px] w-[19px] transition-all duration-300",
+                    onDark ? "bg-white" : "bg-ink",
+                    mobileOpen && "opacity-0"
+                  )}
+                />
+              ))}
             </button>
           </div>
         </div>

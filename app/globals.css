@@ -162,6 +162,30 @@ html {
   outline-offset: 2px;
 }
 
+/* Light tone: the transparent resting header over the homepage's dark hero
+ * photography (`data-tone="light"`, set by Header). Same state model, white
+ * instead of ink; declared after the rules above so it wins at equal
+ * specificity. */
+[data-tone="light"] .nav-link {
+  color: rgba(255, 255, 255, 0.86);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  [data-tone="light"] .nav-link:hover {
+    color: #fff;
+  }
+}
+
+[data-tone="light"] .nav-link[data-open],
+[data-tone="light"] .nav-link[data-active] {
+  color: #fff;
+}
+
+[data-tone="light"] .nav-link:focus-visible {
+  color: #fff;
+  outline-color: #fff;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .nav-link,
   .nav-link__label::after {
