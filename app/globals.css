@@ -1,0 +1,457 @@
+@import "tailwindcss";
+
+@theme {
+  --color-purple: #663399;
+  --color-purple-600: #552b80;
+  --color-purple-100: #efe8f6;
+
+  /* Light aqua accent. The former dark `teal-ink` (#15767a, read as green)
+   * and its `teal-tint` surface were retired in favour of NEOSURA purple. */
+  --color-teal: #63dade;
+
+  /* Ink scale. Softened from near-black (#1a1420) to match the reference's
+   * editorial weight (#2d2d2d) while staying on NEOSURA's purple axis — the
+   * old value read as heavy/SaaS against large light surfaces. */
+  --color-ink: #221a2b;
+  --color-ink-soft: #453d50;
+  --color-muted: #6f6579;
+
+  /* Neutral hairlines. The previous warm beige (#e8e2db/#efeae3) fought the
+   * purple/teal brand; these are the same lightness on a neutral axis. */
+  --color-line: #e7e4ec;
+  --color-line-soft: #f0eef4;
+
+  /* Quiet surfaces. The reference keeps large areas visually SILENT — white
+   * alternating with a barely-there neutral (#f6f8f7). These are now neutral
+   * off-whites with no perceptible lavender, so purple/teal read as ACCENTS
+   * against white and photography instead of tinting whole sections. */
+  --color-paper: #fbfbfc;
+  --color-paper-2: #f4f4f6;
+
+  --color-white: #ffffff;
+
+  /* Dark family, derived from NEOSURA's existing footer/mobile-menu gradient */
+  --color-dark: #14081f;
+  --color-dark-2: #1d1235;
+  --color-dark-3: #140d24;
+
+  --font-sans: "Arial Nova Light", "Arial Nova", Arial, -apple-system, BlinkMacSystemFont,
+    sans-serif;
+
+  --radius-sm: 2px;
+  --radius-lg: 6px;
+
+  --ease-out-refined: cubic-bezier(0.2, 0.7, 0.2, 1);
+
+  /* Motion tokens — measured from the live FINWIWO reference
+   * (docs/finwiwo-architecture/motion.md), applied only where NEOSURA has
+   * an equivalent interaction (header shrink, mega menu, mobile accordion).
+   * Not applied globally. */
+  --duration-motion-big: 800ms;
+  --duration-motion-small: 500ms;
+  --ease-motion-big: cubic-bezier(0.15, 0.2, 0.1, 1);
+  --ease-motion-small: cubic-bezier(0.25, 1, 0.33, 1);
+  --ease-motion-accordion: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Button motion, measured on the reference's own buttons (Phase 8A).
+ * Rest -> hover moves through: background-color, color, border-color,
+ * transform: translateY(-3px) and box-shadow 0 20px 38px rgba(0,0,0,.16),
+ * all on `0.45s cubic-bezier(0.25, 1, 0.33, 1)`. NEOSURA previously had a
+ * mix of colour-only transitions and ad-hoc 200/450/500ms lifts. Colour
+ * itself stays per-button (each keeps its own hover: classes); this only
+ * owns the shared timing, lift and shadow. */
+.btn-motion {
+  transition:
+    background-color 0.45s cubic-bezier(0.25, 1, 0.33, 1),
+    color 0.45s cubic-bezier(0.25, 1, 0.33, 1),
+    border-color 0.45s cubic-bezier(0.25, 1, 0.33, 1),
+    transform 0.45s cubic-bezier(0.25, 1, 0.33, 1),
+    box-shadow 0.45s cubic-bezier(0.25, 1, 0.33, 1);
+}
+
+/* Fine pointers only: on touch an unguarded :hover sticks after a tap and
+ * left the button lifted until the next tap elsewhere. */
+@media (hover: hover) and (pointer: fine) {
+  .btn-motion:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 20px 38px rgba(0, 0, 0, 0.16);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-motion {
+    transition:
+      background-color 0.2s,
+      color 0.2s,
+      border-color 0.2s;
+  }
+
+  .btn-motion:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+/* Desktop header navigation. States are kept visually distinct:
+ *  hover      ink text + 1px ink underline drawing in from the left
+ *  data-open  same as hover, held only while its dropdown is open
+ *  data-active current section: ink text + static 2px purple underline
+ *  focus      :focus-visible outline only (never after a mouse click)
+ * Pure CSS transitions reverse from wherever they are, so leaving mid-draw
+ * retracts immediately — nothing is delayed or held by script. */
+.nav-link {
+  color: var(--color-ink-soft);
+  border-radius: 2px;
+  outline: none;
+  transition: color 250ms var(--ease-ui);
+}
+
+.nav-link__label {
+  position: relative;
+}
+
+.nav-link__label::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  bottom: -4px;
+  height: 1px;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 300ms var(--ease-ui);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .nav-link:hover {
+    color: var(--color-ink);
+  }
+
+  .nav-link:hover .nav-link__label::after {
+    transform: scaleX(1);
+  }
+}
+
+.nav-link[data-open] {
+  color: var(--color-ink);
+}
+
+.nav-link[data-open] .nav-link__label::after {
+  transform: scaleX(1);
+}
+
+.nav-link[data-active] {
+  color: var(--color-ink);
+}
+
+.nav-link[data-active] .nav-link__label::after {
+  height: 2px;
+  background-color: var(--color-purple);
+  transform: scaleX(1);
+  transition: none;
+}
+
+.nav-link:focus-visible {
+  color: var(--color-ink);
+  outline: 2px solid var(--color-purple);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-link,
+  .nav-link__label::after {
+    transition: none;
+  }
+}
+
+/* Page transitions (components/layout/PageTransition.tsx). The old page
+ * leaves quickly so it never competes with the new one; the new page arrives
+ * with a short fade and a 14px rise on the site's UI easing. Restrained on
+ * purpose: no horizontal slide, no scale. The header is anchored so only the
+ * content moves, and the rest of the document swaps without a second fade. */
+::view-transition {
+  pointer-events: none;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+}
+
+::view-transition-group(site-header) {
+  animation: none;
+  z-index: 100;
+}
+
+::view-transition-old(site-header) {
+  display: none;
+}
+
+::view-transition-new(site-header) {
+  animation: none;
+}
+
+::view-transition-old(.page-exit) {
+  animation: 180ms cubic-bezier(0.4, 0, 1, 1) both page-fade-out;
+}
+
+::view-transition-new(.page-enter) {
+  animation: 520ms var(--ease-ui) 120ms both page-rise-in;
+}
+
+@keyframes page-fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes page-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(*),
+  ::view-transition-new(*),
+  ::view-transition-group(*) {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
+  }
+}
+
+/* Hero photo wash. Replaces the flat white fogs (`bg-white/58`,
+ * `bg-white/78`) the full-bleed heroes used to sit under: on desktop the
+ * copy side stays opaque enough to keep the ink fully readable while the
+ * photo side clears, so the image is actually visible instead of uniformly
+ * greyed. Below `lg` the copy spans the full width, so it flattens to an
+ * even wash rather than leaving a low-contrast band under the text. */
+.hero-wash {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+@media (min-width: 1024px) {
+  .hero-wash {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.92) 0%,
+      rgba(255, 255, 255, 0.88) 44%,
+      rgba(255, 255, 255, 0.58) 76%,
+      rgba(255, 255, 255, 0.42) 100%
+    );
+  }
+}
+
+@keyframes audience-fade {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Phase 9A.2 — the three motion families, timed and eased on the live
+ * reference: micro (nav/colour), standard UI (arrows, underlines, buttons)
+ * and editorial/image (hover zoom, group reveals). The image curve and the
+ * 0.65s image-hover timing are the reference's own
+ * (`transition: all .65s cubic-bezier(.05,.2,.1,1)` on its hover-zoom
+ * wrappers); the UI curve is the one its buttons and rows already use. */
+:root {
+  --dur-micro: 220ms;
+  --dur-ui: 450ms;
+  --dur-editorial: 800ms;
+  --ease-ui: cubic-bezier(0.25, 1, 0.33, 1);
+  --ease-img: cubic-bezier(0.05, 0.2, 0.1, 1);
+}
+
+/* Phase 9A — the homepage's small set of motion families, timed on the
+ * reference's own easing (`cubic-bezier(0.25, 1, 0.33, 1)`, the curve its
+ * section fade and buttons run on).
+ *
+ * A. Editorial reveal (`Reveal`): a section group enters once, 16px and
+ *    800ms — the reference's row fade (75px / ~1.2s) deliberately shortened.
+ *    Content is only ever hidden by script, and never when it is already on
+ *    screen, so no-JS and above-the-fold content always render immediately.
+ * B. Image hover: 1 -> 1.02 (1.025 on the audience panels), pointer devices
+ *    only; the homepage runs the reference timing, see .home-motion below.
+ * C. Link/arrow hover: the arrow advances 5px and the underline draws in.
+ * D. Form state: a real success/error message settles in once. */
+[data-reveal="armed"] {
+  opacity: 0;
+  transform: translate3d(0, 16px, 0);
+}
+
+[data-reveal="in"] {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity var(--dur-editorial) var(--ease-ui) var(--reveal-delay, 0ms),
+    transform var(--dur-editorial) var(--ease-ui) var(--reveal-delay, 0ms);
+}
+
+.img-zoom {
+  transition: transform 0.9s var(--ease-ui);
+}
+
+/* Homepage only: the reference's own hover-zoom timing/curve
+ * (.65s cubic-bezier(.05,.2,.1,1)), kept off the other routes whose hover is
+ * already approved at the values above. */
+.home-motion .img-zoom {
+  transition: transform 0.75s var(--ease-img);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .home-motion .img-zoom-trigger:hover .img-zoom,
+  .home-motion .img-zoom-trigger:hover .img-zoom-strong {
+    transform: scale(1.03);
+  }
+}
+
+.overlay-shift {
+  transition: opacity var(--dur-ui) var(--ease-ui);
+}
+
+.arrow-shift {
+  transition: transform var(--dur-ui) var(--ease-ui);
+}
+
+.link-line {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 1px;
+  transition: background-size var(--dur-ui) var(--ease-ui);
+}
+
+.arrow-trigger:focus-visible .link-line {
+  background-size: 100% 1px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .img-zoom-trigger:hover .img-zoom {
+    transform: scale(1.02);
+  }
+
+  /* The audience panels are the page's largest interactive images and carry
+   * the slightly fuller move. */
+  .img-zoom-trigger:hover .img-zoom-strong {
+    transform: scale(1.025);
+  }
+
+  .img-zoom-trigger:hover .overlay-shift {
+    opacity: 0.94;
+  }
+
+  .arrow-trigger:hover .arrow-shift {
+    transform: translateX(5px);
+  }
+
+  .arrow-trigger:hover .link-line {
+    background-size: 100% 1px;
+  }
+}
+
+@keyframes state-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.state-in {
+  animation: state-in 0.5s cubic-bezier(0.25, 1, 0.33, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .img-zoom,
+  .arrow-shift,
+  .link-line,
+  .overlay-shift {
+    transition: none;
+  }
+
+  .img-zoom-trigger:hover .img-zoom,
+  .img-zoom-trigger:hover .img-zoom-strong,
+  .arrow-trigger:hover .arrow-shift {
+    transform: none;
+  }
+
+  .img-zoom-trigger:hover .overlay-shift {
+    opacity: 1;
+  }
+
+  .state-in {
+    animation: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  color: var(--color-ink);
+  background: var(--color-paper);
+  line-height: 1.55;
+  /* Reference body/nav tracking is -0.1px at 16px. Expressed relatively so
+   * it holds at every step of the type scale. */
+  letter-spacing: -0.006em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Headings sit slightly tighter than body text on the reference
+ * (-0.23px at 23px = -0.01em) and never inherit the light body weight.
+ *
+ * Phase 8A — moved into `@layer base`. Unlayered, this rule outranked every
+ * Tailwind `tracking-*` utility (unlayered styles beat layered ones), so a
+ * per-section override could not take effect; several reference modules use
+ * `letter-spacing: normal` on their headings and need to be able to say so. */
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
