@@ -17,3 +17,6 @@ node_modules
 # Local build cache and plain env files
 tsconfig.tsbuildinfo
 .env
+
+# Static export (GitHub Pages review build)
+out/

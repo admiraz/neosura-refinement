@@ -1,0 +1,69 @@
+name: Deploy review site to GitHub Pages
+
+# Builds the static review export (see next.config.ts, GITHUB_PAGES mode) and
+# publishes it to https://<owner>.github.io/<repo>/ on every push to main.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # Static hosting has no server: the form route handlers only accept POST
+      # and cannot be exported. Removed in this CI checkout only; the forms
+      # show their honest network-error message on the review site.
+      - name: Remove server-only form routes
+        run: rm -rf app/api
+
+      - name: Build static export
+        run: pnpm build
+        env:
+          GITHUB_PAGES: "true"
+          PAGES_BASE_PATH: /${{ github.event.repository.name }}
+
+      # Pages cannot rewrite the router's flat prefetch paths to the nested
+      # files the export writes; without this, links do full page reloads.
+      - name: Add flat segment prefetch files
+        run: node scripts/flatten-segment-prefetch.mjs out
+
+      - name: Disable Jekyll processing
+        run: touch out/.nojekyll
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

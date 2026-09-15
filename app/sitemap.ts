@@ -3,6 +3,9 @@ import { siteMeta } from "@/content/de/site";
 import { privateServices } from "@/content/de/private";
 import { businessServices } from "@/content/de/business";
 
+// Built once at build time; required for the static GitHub Pages export.
+export const dynamic = "force-static";
+
 /** All real, indexable, publicly-reachable routes — no draft/unbuilt pages,
  * no API routes, no anchors. `siteMeta.url` is the single centralized
  * production URL source used everywhere else in the app (layout metadata,

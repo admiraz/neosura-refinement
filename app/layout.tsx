@@ -7,18 +7,24 @@ import { siteMeta } from "@/content/de/site";
 import { pageMetadata } from "@/lib/seo";
 import { OrganizationJsonLd } from "@/components/seo/OrganizationJsonLd";
 
+/** Repo sub-path of the GitHub Pages review build (next.config.ts); empty in
+ * every other build. */
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteMeta.url),
   ...pageMetadata({ path: "", title: siteMeta.title, description: siteMeta.description }),
+  // Prefixed for the GitHub Pages review build, which serves from a repo
+  // sub-path; the variable is empty in every other build.
   icons: {
     icon: [
-      { url: "/favicon/favicon-96x96.png", sizes: "96x96", type: "image/png" },
-      { url: "/favicon/favicon.svg", type: "image/svg+xml" },
+      { url: `${basePath}/favicon/favicon-96x96.png`, sizes: "96x96", type: "image/png" },
+      { url: `${basePath}/favicon/favicon.svg`, type: "image/svg+xml" },
     ],
-    shortcut: "/favicon/favicon.ico",
-    apple: "/favicon/apple-touch-icon.png",
+    shortcut: `${basePath}/favicon/favicon.ico`,
+    apple: `${basePath}/favicon/apple-touch-icon.png`,
   },
-  manifest: "/favicon/site.webmanifest",
+  manifest: `${basePath}/favicon/site.webmanifest`,
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
