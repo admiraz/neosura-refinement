@@ -238,10 +238,18 @@ export function Header() {
           </nav>
 
           <div className="flex items-center gap-3">
+            {/* Shown only once the page has scrolled (frosted bar). At rest it
+                is invisible, unclickable and unfocusable but keeps its space,
+                so the navigation never shifts when it appears. */}
             <Link
               href={primaryCta.href}
               onFocus={scheduleClose}
-              className="group hidden h-[41px] items-center gap-2 rounded-full bg-purple px-5 text-[0.86rem] font-medium tracking-[0.01em] text-white transition-[background-color,translate,box-shadow] duration-300 ease-[var(--ease-ui)] hover:-translate-y-0.5 hover:bg-purple-600 hover:shadow-[0_8px_20px_rgba(85,43,128,0.22)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple motion-reduce:hover:translate-y-0 sm:inline-flex min-[1400px]:px-[22px] min-[1400px]:text-[0.95rem]"
+              aria-hidden={!compact || undefined}
+              tabIndex={compact ? undefined : -1}
+              className={cn(
+                "group hidden h-[41px] items-center gap-2 rounded-full bg-purple px-5 text-[0.86rem] font-medium tracking-[0.01em] text-white transition-[background-color,translate,box-shadow,opacity,visibility] duration-300 ease-[var(--ease-ui)] hover:-translate-y-0.5 hover:bg-purple-600 hover:shadow-[0_8px_20px_rgba(85,43,128,0.22)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple motion-reduce:transition-none motion-reduce:hover:translate-y-0 sm:inline-flex min-[1400px]:px-[22px] min-[1400px]:text-[0.95rem]",
+                compact ? "visible opacity-100" : "pointer-events-none invisible translate-y-1 opacity-0"
+              )}
             >
               {primaryCta.label}
               <svg
