@@ -23,7 +23,9 @@ export const impressum = {
       heading: "Firmenangaben",
       lines: ["[VOLLSTÄNDIGE FIRMA GEMÄSS HANDELSREGISTER]", "Gewerbestrasse 10", "6330 Cham", "Schweiz"],
     },
-    { heading: "Kontakt", lines: ["Telefon: [TELEFONNUMMER VERIFIZIERT]", "E-Mail: info@neosura.ch"] },
+    // Change Request 1 §1 — number confirmed by the client; the
+    // [TELEFONNUMMER VERIFIZIERT] placeholder is resolved.
+    { heading: "Kontakt", lines: ["Telefon: +41 71 772 02 11", "E-Mail: info@neosura.ch"] },
     {
       heading: "Handelsregister",
       lines: ["Eingetragen im Handelsregister des Kantons [KANTON GEMÄSS HR-AUSZUG]", "UID: CHE-330.617.129"],

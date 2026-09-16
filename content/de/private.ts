@@ -6,7 +6,7 @@ export const privateIntro = {
   // Phase 7M.1 — client guide §4.2 exact /privatkunden subline (also the
   // hero's `lead` line on that page).
   lead: "Die meisten Haushalte zahlen für Deckungen, die sie nicht brauchen, und sind dort unterversichert, wo es weh tut. Wir analysieren Ihre Policen, schliessen Lücken und streichen Doppeltes.",
-  body: "Unsere Beratung umfasst Gesundheit, Wohnen, Mobilität, Vorsorge und rechtliche Absicherung — individuell abgestimmt auf Ihre Lebenssituation.",
+  body: "Unsere Beratung umfasst Gesundheit, Wohnen, Mobilität, Vorsorge und rechtliche Absicherung, individuell abgestimmt auf Ihre Lebenssituation.",
 };
 
 /** Phase 7M.0 — slugs/titles migrated to the client guide's canonical

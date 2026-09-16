@@ -161,7 +161,7 @@ export function CategoryHeroBusinessForm() {
 
         {status === "success" && (
           <p role="status" className="mt-4 text-[0.85rem] text-purple">
-            Vielen Dank. Ihre Anfrage wurde erfolgreich übermittelt — wir melden uns in Kürze bei Ihnen.
+            Vielen Dank. Ihre Anfrage wurde erfolgreich übermittelt. Wir melden uns in Kürze bei Ihnen.
           </p>
         )}
         {status === "error" && (

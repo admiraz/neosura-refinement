@@ -18,7 +18,7 @@ export function AboutReviews() {
       <p className="mt-3 text-[0.78rem] uppercase tracking-[0.14em] text-muted">Noch ausstehend</p>
       <p className="mt-2 max-w-[480px] text-[1rem] font-light leading-[24px] text-ink-soft">
         Verifizierte Google-Bewertungen sind noch nicht angebunden. Diese Sektion zeigt echte Bewertungen, sobald
-        eine verifizierte Datenquelle vorliegt — keine erfundenen Sterne oder Zitate.
+        eine verifizierte Datenquelle vorliegt, keine erfundenen Sterne oder Zitate.
       </p>
     </div>
   );

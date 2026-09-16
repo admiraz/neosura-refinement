@@ -102,7 +102,7 @@ export const heroSlides: HeroSlide[] = [
     id: "analyse",
     eyebrow: "So funktioniert's",
     headlineLines: ["Analyse.", "Struktur. Begleitung."],
-    body: "Laden Sie Ihre Unterlagen sicher hoch — wir analysieren Ihre Situation ganzheitlich und melden uns mit einer klar strukturierten Einschätzung.",
+    body: "Laden Sie Ihre Unterlagen sicher hoch. Wir analysieren Ihre Situation ganzheitlich und melden uns mit einer klar strukturierten Einschätzung.",
     ctaPrimary: { label: "Kostenlose Analyse starten", href: "/#dokumente" },
     mascot: { src: "/images/bear-approach-1.webp", alt: "" },
     theme: "analyse",

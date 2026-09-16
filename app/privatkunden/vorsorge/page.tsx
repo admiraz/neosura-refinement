@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import { privateServices } from "@/content/de/private";
-import { siteMeta } from "@/content/de/site";
 import { pageMetadata } from "@/lib/seo";
 import { vorsorgeVermoegenDeep as deep } from "@/content/de/deep/vorsorge-vermoegen";
 import { clientGuideTopicCta } from "@/content/de/clientGuide";
@@ -9,12 +7,11 @@ import { WohnenEditorialRow } from "@/components/service-deep/WohnenEditorialRow
 import { CategoryFaq } from "@/components/category/CategoryFaq";
 import { CategoryTopicCta } from "@/components/category/CategoryTopicCta";
 
-const service = privateServices[3];
 
 export const metadata: Metadata = pageMetadata({
   path: "/privatkunden/vorsorge",
-  title: `${service.title} | ${siteMeta.name}`,
-  description: service.body,
+  title: "Säule 3a & Lebensversicherung | neosura",
+  description: "Vorsorgelücken schliessen, Steuern sparen, Familie absichern. Unabhängige Vorsorgeberatung mit Säule 3a und 3b.",
 });
 
 /** Phase 7I — HARD RULE: no old Phase-6 deep-page sections remain on this

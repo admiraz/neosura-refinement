@@ -32,7 +32,7 @@ export const inventarImmobilienDeep = {
   insuredObjects: ["Inventar", "Waren", "Maschinen", "Immobilien"],
   problem: {
     statement:
-      "Sind betriebliche Sachwerte und Immobilien wirklich zum aktuellen Wert abgesichert — oder orientiert sich die Police noch an alten Anschaffungswerten?",
+      "Sind betriebliche Sachwerte und Immobilien wirklich zum aktuellen Wert abgesichert, oder orientiert sich die Police noch an alten Anschaffungswerten?",
     response: "Wir aktualisieren das Bild.",
   },
   sachwerte: {

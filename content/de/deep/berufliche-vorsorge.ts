@@ -32,7 +32,7 @@ export const beruflicheVorsorgeDeep = {
   ],
   problem: {
     statement:
-      "Ist die bestehende berufliche Vorsorge wirklich noch ein Vorteil im Wettbewerb um Mitarbeitende — oder nur eine gesetzliche Pflichtübung?",
+      "Ist die bestehende berufliche Vorsorge wirklich noch ein Vorteil im Wettbewerb um Mitarbeitende, oder nur eine gesetzliche Pflichtübung?",
     response: "Wir machen daraus mehr.",
   },
   bvgBeratung: {

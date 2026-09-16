@@ -37,7 +37,7 @@ import { ParallaxMedia } from "./ParallaxMedia";
 export function PostServiceProof() {
   return (
     <section className="relative aspect-[4/3] w-full overflow-hidden bg-dark lg:aspect-[16/9]">
-      {/* Phase 9A.2 — this section's single motion idea: a very small
+      {/* Phase 9A.2, this section's single motion idea: a very small
           scroll-linked drift of the photograph (see `ParallaxMedia`). The
           headline and caption are deliberately not animated. */}
       <ParallaxMedia className="absolute inset-0 -top-[24px] h-[calc(100%+48px)]">
@@ -60,24 +60,27 @@ export function PostServiceProof() {
         <h2 className="mt-3 max-w-[20ch] text-[1.8rem] font-normal leading-[1.15] text-white lg:text-[2rem]">
           Beratung beginnt mit Zuhören.
         </h2>
-      </div>
 
-      <Link
-        href="/#dokumente"
-        aria-label="Zu den Unterlagen und zur Beratung"
-        className="arrow-trigger group absolute left-1/2 top-1/2 inline-flex h-[64px] w-[64px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-white/70 text-white transition-[background-color,color,border-color] duration-[400ms] ease-[cubic-bezier(0.19,1,0.22,1)] hover:border-white hover:bg-white hover:text-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white lg:h-[80px] lg:w-[80px]"
-      >
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          aria-hidden
-          className="arrow-shift h-5 w-5 lg:h-6 lg:w-6"
+        {/* Change Request 1 §4 — was a bare circular arrow pointing at the
+            retired /#dokumente anchor, which rendered as a raw URL in the
+            client's review. Now a labelled button to the real page. */}
+        <Link
+          href="/analyse"
+          className="arrow-trigger group mt-6 inline-flex h-[50px] items-center gap-2.5 rounded-full bg-white px-7 text-[0.875rem] font-medium tracking-[0.5px] text-ink btn-motion hover:bg-white/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
         >
-          <path d="M5 12h14M12 5l7 7-7 7" />
-        </svg>
-      </Link>
+          Kostenlose Analyse starten
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            aria-hidden
+            className="arrow-shift h-4 w-4"
+          >
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </Link>
+      </div>
     </section>
   );
 }

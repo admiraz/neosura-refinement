@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import { privateServices } from "@/content/de/private";
-import { siteMeta } from "@/content/de/site";
 import { pageMetadata } from "@/lib/seo";
 import { fahrzeugReisenDeep as deep } from "@/content/de/deep/fahrzeug-reisen";
 import { clientGuideHome, clientGuideTopicCta } from "@/content/de/clientGuide";
@@ -9,12 +7,11 @@ import { WohnenEditorialRow } from "@/components/service-deep/WohnenEditorialRow
 import { CategoryNewsletter } from "@/components/category/CategoryNewsletter";
 import { CategoryTopicCta } from "@/components/category/CategoryTopicCta";
 
-const service = privateServices[2];
 
 export const metadata: Metadata = pageMetadata({
   path: "/privatkunden/fahrzeug-reisen",
-  title: `${service.title} | ${siteMeta.name}`,
-  description: service.body,
+  title: "Autoversicherung vergleichen | neosura",
+  description: "Haftpflicht, Teil- oder Vollkasko: Wir vergleichen Autoversicherungen und Reiseschutz unabhängig und kostenlos.",
 });
 
 /** Phase 7H — HARD RULE: no old Phase-6 deep-page sections remain on this

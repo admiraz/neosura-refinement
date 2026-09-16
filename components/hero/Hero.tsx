@@ -1,71 +1,39 @@
 "use client";
 
-import { getImageProps } from "next/image";
-import { useCallback, useEffect, useRef } from "react";
 import { heroSlides } from "@/content/de/hero";
-import { useHeroController } from "@/lib/hooks/useHeroController";
-import { DesktopHero } from "./DesktopHero";
-import { MobileHero } from "./MobileHero";
+import { useReducedMotion } from "@/lib/hooks/useReducedMotion";
+import { DesktopHeroScene } from "./DesktopHeroScene";
+import { MobileHeroScene } from "./MobileHeroScene";
+
+/** Change Request 1 §6 — one static hero instead of the slider: the client
+ * judged the rotation to add nothing and cost load time. The brand state
+ * (content/de/hero.ts, first entry) is what remains; its scene, photograph
+ * and one-time entrance are unchanged, but there is no autoplay, no
+ * Zurück/Weiter control, no progress ring and no swipe.
+ *
+ * `DesktopHero`/`MobileHero` (the slider shells) and the remaining slide
+ * data are deliberately left in the repository rather than deleted, so the
+ * rotation can be restored without rebuilding it. */
+const slide = heroSlides[0];
 
 export function Hero() {
-  const controller = useHeroController();
-  const sectionRef = useRef<HTMLElement>(null);
-
-  const onSwipe = useCallback(
-    (dir: 1 | -1) => {
-      if (dir === 1) controller.next();
-      else controller.prev();
-    },
-    [controller]
-  );
-
-  useEffect(() => {
-    const section = sectionRef.current;
-    if (!section) return;
-    function onKeyDown(e: KeyboardEvent) {
-      if (!section?.contains(document.activeElement) && document.activeElement !== document.body) {
-        return;
-      }
-      if (e.key === "ArrowRight") controller.next();
-      if (e.key === "ArrowLeft") controller.prev();
-    }
-    window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [controller.next, controller.prev]);
-
-  // Slides mount on demand, so a photo not yet in cache would fade in over
-  // the dark fallback. Once the page is idle, warm each slide photo with the
-  // exact URL next/image will request (same srcset/sizes as the scenes).
-  useEffect(() => {
-    const warm = () => {
-      for (const s of heroSlides) {
-        if (!s.photo) continue;
-        const { props } = getImageProps({ src: s.photo.src, alt: "", fill: true, sizes: "100vw" });
-        const img = new window.Image();
-        if (props.sizes) img.sizes = props.sizes;
-        if (props.srcSet) img.srcset = props.srcSet;
-        img.src = props.src;
-      }
-    };
-    if ("requestIdleCallback" in window) {
-      const id = window.requestIdleCallback(warm, { timeout: 2500 });
-      return () => window.cancelIdleCallback(id);
-    }
-    const t = setTimeout(warm, 1200);
-    return () => clearTimeout(t);
-  }, []);
+  const reducedMotion = useReducedMotion();
 
   return (
-    <section ref={sectionRef} aria-label="Neosura Vorstellung" aria-roledescription="Bildschirmpräsentation">
-      {/* The single semantic H1 for the page. DesktopHeroScene/MobileHeroScene
-          render the visible per-slide headline as a styled <p> — this is the
-          only real <h1> in the DOM, at every viewport, so automated and
-          assistive-tech heading counts never see the two-scene architecture
-          as duplicate content. */}
-      <h1 className="sr-only">{controller.slide.headlineLines.join(" ")}</h1>
-      <DesktopHero controller={controller} />
-      <MobileHero controller={controller} onSwipe={onSwipe} />
+    <section aria-label="Neosura Vorstellung">
+      {/* The single semantic H1 for the page: the scenes render the visible
+          headline as a styled <p>, so assistive tech and automated heading
+          counts never see the two-scene (desktop/mobile) architecture as
+          duplicate content. */}
+      <h1 className="sr-only">{slide.headlineLines.join(" ")}</h1>
+
+      <div className="relative hidden h-[690px] w-full overflow-hidden lg:block">
+        <DesktopHeroScene slide={slide} phase="in" reducedMotion={reducedMotion} zIndex={10} />
+      </div>
+
+      <div className="relative block h-[min(575px,84svh)] w-full overflow-hidden lg:hidden">
+        <MobileHeroScene slide={slide} phase="in" reducedMotion={reducedMotion} zIndex={10} />
+      </div>
     </section>
   );
 }

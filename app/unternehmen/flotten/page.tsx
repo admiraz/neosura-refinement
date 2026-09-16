@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { businessServices } from "@/content/de/business";
-import { siteMeta } from "@/content/de/site";
 import { pageMetadata } from "@/lib/seo";
 import { flottenversicherungDeep as deep } from "@/content/de/deep/flottenversicherung";
 import { clientGuideFleet } from "@/content/de/clientGuide";
@@ -10,12 +8,11 @@ import { WohnenEditorialRow } from "@/components/service-deep/WohnenEditorialRow
 import { Container } from "@/components/ui/Container";
 import { CategoryFaq } from "@/components/category/CategoryFaq";
 
-const service = businessServices[1];
 
 export const metadata: Metadata = pageMetadata({
   path: "/unternehmen/flotten",
-  title: `${service.title} | ${siteMeta.name}`,
-  description: service.body,
+  title: "Flottenversicherung für Firmen | neosura",
+  description: "Ab fünf Fahrzeugen lohnt sich die Flottenpolice: eine Deckung, eine Rechnung, weniger Aufwand. Jetzt vergleichen.",
 });
 
 /** Phase 7L — HARD RULE: no old Phase-6 deep-page sections remain on this

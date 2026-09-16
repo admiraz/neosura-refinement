@@ -9,7 +9,7 @@ export const documentsContent = {
   submitLabel: "Unterlagen senden",
   /** Shown only once the server has confirmed the email was actually
    * delivered (see app/api/documents/route.ts) — never on a bare 200. */
-  successMessage: "Vielen Dank. Ihre Unterlagen wurden erfolgreich übermittelt — wir melden uns in Kürze bei Ihnen.",
+  successMessage: "Vielen Dank. Ihre Unterlagen wurden erfolgreich übermittelt. Wir melden uns in Kürze bei Ihnen.",
   /** Field-level validation failed (400) — generic fallback if no
    * specific field error is available to show instead. */
   errorMessage: "Die Übermittlung ist fehlgeschlagen. Bitte überprüfen Sie Ihre Angaben und versuchen Sie es erneut.",

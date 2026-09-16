@@ -171,9 +171,10 @@ export function CategoryServiceShowcase() {
                     />
                   </div>
                   <div className="flex items-center gap-2.5 px-1 pt-3.5 sm:pt-4">
-                    <span aria-hidden className="text-ink-soft/70">
-                      —
-                    </span>
+                    {/* Change Request 1 §2 — was a literal em dash; the mark
+                        is decorative, so it is drawn as a hairline instead of
+                        a character the writing rules prohibit. */}
+                    <span aria-hidden className="h-px w-3 shrink-0 bg-ink-soft/50" />
                     {/* Phase 9B — the card had no link affordance at all beyond
                         its photo; the title now carries the page's standard
                         underline reveal (hover and keyboard focus). */}

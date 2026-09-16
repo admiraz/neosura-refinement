@@ -126,7 +126,7 @@ export function ContactForm() {
             role="status"
             className="mt-5 max-w-[62ch] rounded-[12px] border border-purple/20 bg-purple/[0.08] px-5 py-4 text-[1rem] font-light leading-[24px] text-ink"
           >
-            Vielen Dank. Ihre Nachricht wurde erfolgreich übermittelt — wir melden uns in Kürze bei Ihnen.
+            Vielen Dank. Ihre Nachricht wurde erfolgreich übermittelt. Wir melden uns in Kürze bei Ihnen.
           </p>
         )}
         {status === "error" && (

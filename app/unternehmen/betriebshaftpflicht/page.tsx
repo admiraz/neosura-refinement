@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import { businessServices } from "@/content/de/business";
-import { siteMeta } from "@/content/de/site";
 import { pageMetadata } from "@/lib/seo";
 import { betriebshaftpflichtDeep as deep } from "@/content/de/deep/betriebshaftpflicht";
 import { clientGuideTopicCta } from "@/content/de/clientGuide";
@@ -10,12 +8,11 @@ import { Container } from "@/components/ui/Container";
 import { CategoryFaq } from "@/components/category/CategoryFaq";
 import { CategoryTopicCta } from "@/components/category/CategoryTopicCta";
 
-const service = businessServices[0];
 
 export const metadata: Metadata = pageMetadata({
   path: "/unternehmen/betriebshaftpflicht",
-  title: `${service.title} | ${siteMeta.name}`,
-  description: service.body,
+  title: "Betriebshaftpflicht für KMU | neosura",
+  description: "Betriebshaftpflicht im Vergleich: passende Deckungssummen und Bausteine für Ihre Branche, verhandelt von Ihrem Broker.",
 });
 
 /** Phase 7K — HARD RULE: no old Phase-6 deep-page sections remain on this

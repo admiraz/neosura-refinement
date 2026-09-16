@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { privateServices } from "@/content/de/private";
-import { siteMeta } from "@/content/de/site";
 import { pageMetadata } from "@/lib/seo";
 import { gesundheitDeep as deep } from "@/content/de/deep/gesundheit";
 import { clientGuideHome, clientGuideTopicCta } from "@/content/de/clientGuide";
@@ -17,12 +15,11 @@ import { CategoryFaq } from "@/components/category/CategoryFaq";
 import { CategoryNewsletter } from "@/components/category/CategoryNewsletter";
 import { CategoryTopicCta } from "@/components/category/CategoryTopicCta";
 
-const service = privateServices[0];
 
 export const metadata: Metadata = pageMetadata({
   path: "/privatkunden/krankenkasse",
-  title: `${service.title} | ${siteMeta.name}`,
-  description: service.body,
+  title: "Krankenkasse vergleichen & wechseln | neosura",
+  description: "Grund- und Zusatzversicherung unabhängig vergleichen. Wir übernehmen Kündigung und Wechsel, kostenlos und fristgerecht.",
 });
 
 /** Phase 7F.2 — HARD RULE: no old NEOSURA deep-page sections remain on

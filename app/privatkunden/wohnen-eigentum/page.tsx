@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import { privateServices } from "@/content/de/private";
-import { siteMeta } from "@/content/de/site";
 import { pageMetadata } from "@/lib/seo";
 import { wohnenEigentumDeep as deep } from "@/content/de/deep/wohnen-eigentum";
 import { clientGuideHome, clientGuideTopicCta } from "@/content/de/clientGuide";
@@ -10,12 +8,11 @@ import { WohnenUnterversicherung } from "@/components/service-deep/WohnenUnterve
 import { CategoryNewsletter } from "@/components/category/CategoryNewsletter";
 import { CategoryTopicCta } from "@/components/category/CategoryTopicCta";
 
-const service = privateServices[1];
 
 export const metadata: Metadata = pageMetadata({
   path: "/privatkunden/wohnen-eigentum",
-  title: `${service.title} | ${siteMeta.name}`,
-  description: service.body,
+  title: "Hausrat- & Haftpflichtversicherung | neosura",
+  description: "Hausrat, Privathaftpflicht und Gebäudeversicherung mit den richtigen Summen. Unabhängiger Vergleich durch neosura.",
 });
 
 /** Phase 7G — HARD RULE: no old Phase-6 deep-page sections remain on this

@@ -21,7 +21,7 @@ export const wohnenEigentumDeep = {
     "Hausrat und Privathaftpflicht gehören zu den günstigsten Versicherungen überhaupt und zu den wichtigsten. Wir sorgen dafür, dass die Summen stimmen und nichts doppelt läuft.",
   problem: {
     statement:
-      "Ist der Hausrat wirklich noch zum aktuellen Wert versichert — und deckt die Haftpflicht auch tatsächlich die eigene Wohnsituation ab?",
+      "Ist der Hausrat wirklich noch zum aktuellen Wert versichert, und deckt die Haftpflicht auch tatsächlich die eigene Wohnsituation ab?",
     response: "Wir prüfen es genau.",
   },
   hausrat: {
@@ -93,7 +93,7 @@ export const wohnenEigentumDeep = {
     eyebrow: "Individuelle Wohnsituation",
     heading: "Individuelle Wohnsituation",
     paragraphs: [
-      "Ob Mietwohnung, Eigentum oder gemeinsamer Haushalt — die passende Kombination aus Hausrat- und Haftpflichtschutz hängt von der jeweiligen Wohnsituation und den vorhandenen Vermögenswerten ab.",
+      "Ob Mietwohnung, Eigentum oder gemeinsamer Haushalt: Die passende Kombination aus Hausrat- und Haftpflichtschutz hängt von der jeweiligen Wohnsituation und den vorhandenen Vermögenswerten ab.",
       "Wir ordnen bestehende Policen und zeigen auf, wo Deckung und tatsächliche Wohnsituation heute auseinanderlaufen.",
     ],
   },

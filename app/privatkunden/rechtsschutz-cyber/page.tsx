@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import { privateServices } from "@/content/de/private";
-import { siteMeta } from "@/content/de/site";
 import { pageMetadata } from "@/lib/seo";
 import { rechtCyberDeep as deep } from "@/content/de/deep/recht-cyber";
 import { clientGuideTopicCta } from "@/content/de/clientGuide";
@@ -9,12 +7,11 @@ import { WohnenEditorialRow } from "@/components/service-deep/WohnenEditorialRow
 import { CategoryFaq } from "@/components/category/CategoryFaq";
 import { CategoryTopicCta } from "@/components/category/CategoryTopicCta";
 
-const service = privateServices[4];
 
 export const metadata: Metadata = pageMetadata({
   path: "/privatkunden/rechtsschutz-cyber",
-  title: `${service.title} | ${siteMeta.name}`,
-  description: service.body,
+  title: "Rechtsschutz- & Cyberversicherung | neosura",
+  description: "Rechtsschutz und Cyberdeckung für Private im unabhängigen Vergleich: Anwaltskosten, Streitfälle und digitale Risiken abgesichert.",
 });
 
 /** Phase 7J — HARD RULE: no old Phase-6 deep-page sections remain on this

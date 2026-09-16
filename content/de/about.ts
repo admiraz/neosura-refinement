@@ -7,7 +7,7 @@ export const about = {
   heading: "Ein Broker, der auf Ihrer Seite sitzt.",
   paragraphs: [
     "neosura ist ein unabhängiger, im FINMA-Vermittlerregister eingetragener Versicherungsbroker mit Sitz in Cham. Wir vertreten keine Gesellschaft, sondern unsere Kundinnen und Kunden: Privatpersonen und Unternehmen in der ganzen Deutschschweiz, beraten vor Ort oder vollständig digital.",
-    "Für Privatkunden schaffen wir durchdachte Absicherungskonzepte in den Bereichen Gesundheit, Wohnen & Eigentum, Mobilität, Reisen sowie Vorsorge & Vermögen. Für Unternehmen entwickeln wir nachhaltige Lösungen für Mitarbeitende, Betrieb, Flotten, Sachwerte und betriebliche Risiken — individuell abgestimmt auf Struktur, Wachstum und langfristige Ziele.",
+    "Für Privatkunden schaffen wir durchdachte Absicherungskonzepte in den Bereichen Gesundheit, Wohnen & Eigentum, Mobilität, Reisen sowie Vorsorge & Vermögen. Für Unternehmen entwickeln wir nachhaltige Lösungen für Mitarbeitende, Betrieb, Flotten, Sachwerte und betriebliche Risiken, individuell abgestimmt auf Struktur, Wachstum und langfristige Ziele.",
   ],
   /** Phase 7M.1 — no longer a substring of `paragraphs[0]` (that field
    * was replaced with the client guide's §4.18 copy above); this is the
@@ -24,5 +24,5 @@ export const about = {
   focusPrivate:
     "Für Privatkunden schaffen wir durchdachte Absicherungskonzepte in den Bereichen Gesundheit, Wohnen & Eigentum, Mobilität, Reisen sowie Vorsorge & Vermögen.",
   focusBusiness:
-    "Für Unternehmen entwickeln wir nachhaltige Lösungen für Mitarbeitende, Betrieb, Flotten, Sachwerte und betriebliche Risiken — individuell abgestimmt auf Struktur, Wachstum und langfristige Ziele.",
+    "Für Unternehmen entwickeln wir nachhaltige Lösungen für Mitarbeitende, Betrieb, Flotten, Sachwerte und betriebliche Risiken, individuell abgestimmt auf Struktur, Wachstum und langfristige Ziele.",
 };

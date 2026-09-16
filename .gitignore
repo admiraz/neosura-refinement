@@ -20,3 +20,7 @@ tsconfig.tsbuildinfo
 
 # Static export (GitHub Pages review build)
 out/
+
+# Client change-request documents (internal, never publish)
+Neosura_Change_Request_*.docx
+*.docx

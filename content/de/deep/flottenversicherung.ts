@@ -31,14 +31,14 @@ export const flottenversicherungDeep = {
   ],
   problem: {
     statement:
-      "Wachsen Fuhrpark und Versicherungsstruktur wirklich im gleichen Tempo — oder verwaltet das Unternehmen längst mehr Fahrzeuge, als die bestehende Police sinnvoll abdeckt?",
+      "Wachsen Fuhrpark und Versicherungsstruktur wirklich im gleichen Tempo, oder verwaltet das Unternehmen längst mehr Fahrzeuge, als die bestehende Police sinnvoll abdeckt?",
     response: "Wir strukturieren das neu.",
   },
   flotten: {
     eyebrow: "Firmenfahrzeuge & Flotten",
     heading: "Firmenfahrzeuge & Flotten",
     paragraphs: [
-      "Auch für Firmenfahrzeuge gilt: Die Motorfahrzeug-Haftpflichtversicherung ist gesetzlich vorgeschrieben. Bei mehreren Fahrzeugen kommt zusätzlich die Frage der einheitlichen Verwaltung hinzu — einzelne Policen pro Fahrzeug sind oft weniger effizient als eine koordinierte Flottenlösung.",
+      "Auch für Firmenfahrzeuge gilt: Die Motorfahrzeug-Haftpflichtversicherung ist gesetzlich vorgeschrieben. Bei mehreren Fahrzeugen kommt zusätzlich die Frage der einheitlichen Verwaltung hinzu, einzelne Policen pro Fahrzeug sind oft weniger effizient als eine koordinierte Flottenlösung.",
       "Eine Flottenversicherung bündelt mehrere Fahrzeuge unter einer gemeinsamen Struktur und vereinfacht damit Verwaltung, Übersicht und Schadenprozesse.",
     ],
     checklist: [
@@ -96,7 +96,7 @@ export const flottenversicherungDeep = {
     },
     {
       question: "Ab wie vielen Fahrzeugen lohnt sich eine Flottenlösung?",
-      answer: "Das hängt von der individuellen Situation ab — bereits bei wenigen Fahrzeugen kann eine gebündelte Struktur den Verwaltungsaufwand spürbar reduzieren.",
+      answer: "Das hängt von der individuellen Situation ab, bereits bei wenigen Fahrzeugen kann eine gebündelte Struktur den Verwaltungsaufwand spürbar reduzieren.",
     },
     {
       question: "Was passiert bei einem Fahrzeugwechsel innerhalb der Flotte?",

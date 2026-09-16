@@ -177,7 +177,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
                                 {child.subtopics && child.subtopics.length > 0 && (
                                   <button
                                     type="button"
-                                    aria-label={`${child.label} — Kapitel anzeigen`}
+                                    aria-label={`${child.label}: Kapitel anzeigen`}
                                     aria-expanded={expandedService === child.href}
                                     onClick={() =>
                                       setExpandedService((cur) => (cur === child.href ? null : child.href))

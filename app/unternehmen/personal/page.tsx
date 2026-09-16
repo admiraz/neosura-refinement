@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import { businessServices } from "@/content/de/business";
-import { siteMeta } from "@/content/de/site";
 import { pageMetadata } from "@/lib/seo";
 import { gesundheitUnfallDeep as deep } from "@/content/de/deep/gesundheit-unfall";
 import { clientGuideTopicCta } from "@/content/de/clientGuide";
@@ -10,12 +8,11 @@ import { WohnenUnterversicherung } from "@/components/service-deep/WohnenUnterve
 import { Container } from "@/components/ui/Container";
 import { CategoryTopicCta } from "@/components/category/CategoryTopicCta";
 
-const service = businessServices[4];
 
 export const metadata: Metadata = pageMetadata({
   path: "/unternehmen/personal",
-  title: `${service.title} | ${siteMeta.name}`,
-  description: service.body,
+  title: "Krankentaggeld & UVG für KMU | neosura",
+  description: "KTG und Unfallversicherung im Vergleich: Lohnfortzahlung absichern, Prämien senken, Mitarbeitende schützen.",
 });
 
 /** Phase 7O.A — TARGETED CORRECTION of Phase 7O, not a redesign. Three

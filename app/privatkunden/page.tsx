@@ -1,8 +1,5 @@
 import type { Metadata } from "next";
-import { privateIntro } from "@/content/de/private";
-import { businessIntro } from "@/content/de/business";
 import { principles } from "@/content/de/principles";
-import { siteMeta } from "@/content/de/site";
 import { pageMetadata } from "@/lib/seo";
 import { CategoryHero } from "@/components/category/CategoryHero";
 import { CategoryStatement } from "@/components/category/CategoryStatement";
@@ -13,11 +10,13 @@ import { CategoryProcess } from "@/components/category/CategoryProcess";
 import { CategoryComparison } from "@/components/category/CategoryComparison";
 import { CategoryFaq } from "@/components/category/CategoryFaq";
 import { AdvisoryConversion } from "@/components/home/AdvisoryConversion";
+import { privateIntro } from "@/content/de/private";
+import { businessIntro } from "@/content/de/business";
 
 export const metadata: Metadata = pageMetadata({
   path: "/privatkunden",
-  title: `${privateIntro.title} | ${siteMeta.name}`,
-  description: privateIntro.lead,
+  title: "Versicherungen für Privatpersonen | neosura",
+  description: "Krankenkasse, Hausrat, Auto, Vorsorge, Rechtsschutz: Wir analysieren Ihre Policen, schliessen Lücken und senken Ihre Prämien.",
 });
 
 export default function PrivatkundenPage() {
@@ -57,10 +56,10 @@ export default function PrivatkundenPage() {
         headingAccent="Die passende Absicherung"
         headingRest="beginnt mit Klarheit."
         paragraphs={[
-          "Ihre Absicherung verdient mehr als eine Standardlösung — sie verdient eine Struktur, die zu Ihrer persönlichen Situation passt.",
+          "Ihre Absicherung verdient mehr als eine Standardlösung. Sie verdient eine Struktur, die zu Ihrer persönlichen Situation passt.",
           "Viele Versicherungspakete wachsen über Jahre, ohne je neu geordnet zu werden. Einzelne Policen überschneiden sich, andere Risiken bleiben ungedeckt. Wir schaffen Klarheit darüber, was wirklich zählt.",
           "Wir analysieren Ihre bestehende Absicherung, ordnen Risiken sinnvoll ein und stellen fest, wo echte Lücken oder unnötige Überschneidungen bestehen.",
-          "Aus dieser Analyse entsteht eine Struktur, die zu Ihrer Lebenssituation, Ihrem Eigentum und Ihren Zielen passt — nachvollziehbar und persönlich erklärt, nicht einfach vorgegeben.",
+          "Aus dieser Analyse entsteht eine Struktur, die zu Ihrer Lebenssituation, Ihrem Eigentum und Ihren Zielen passt: nachvollziehbar und persönlich erklärt, nicht einfach vorgegeben.",
           "Absicherung ist kein einmaliges Projekt. Situationen verändern sich, und mit ihnen die passenden Lösungen. Wir begleiten diese Entwicklung langfristig.",
           "Persönliche Beratung beginnt mit Zuhören. Sprechen Sie mit uns über Ihre aktuelle Absicherung.",
         ]}
@@ -144,7 +143,7 @@ export default function PrivatkundenPage() {
           {
             number: "04",
             title: "Begleitung",
-            body: "Absicherung ist kein einmaliges Projekt. Wir begleiten diese Entwicklung langfristig — auch im Schadenfall.",
+            body: "Absicherung ist kein einmaliges Projekt. Wir begleiten diese Entwicklung langfristig, auch im Schadenfall.",
             photo: {
               photo: "/images/services/private-pension-editorial.webp",
               alt: "Reifes Paar prüft gemeinsam Unterlagen am Laptop",
@@ -157,7 +156,7 @@ export default function PrivatkundenPage() {
 
       <CategoryComparison
         introHeading="Der Unterschied liegt in der Begleitung."
-        introBody="Viele Wege führen zu einer Versicherungslösung — aber nicht jeder bietet persönliche Beratung, laufende Begleitung und Unterstützung im Schadenfall. Genau das ist unser Ansatz."
+        introBody="Viele Wege führen zu einer Versicherungslösung, aber nicht jeder bietet persönliche Beratung, laufende Begleitung und Unterstützung im Schadenfall. Genau das ist unser Ansatz."
         leftHeading="Selbstständig organisieren"
         rightHeading="Mit persönlicher Beratung"
         rows={[
@@ -185,13 +184,13 @@ export default function PrivatkundenPage() {
             // Source: CategoryProcess steps (this page) + CategoryExplainer's closing line.
             question: "Wie läuft die Beratung ab?",
             answer:
-              "Persönliche Beratung beginnt mit Zuhören. Wir analysieren Ihre bestehende Absicherung, entwickeln eine passende Struktur und begleiten Sie langfristig — in vier klaren Schritten.",
+              "Persönliche Beratung beginnt mit Zuhören. Wir analysieren Ihre bestehende Absicherung, entwickeln eine passende Struktur und begleiten Sie langfristig, in vier klaren Schritten.",
           },
           {
             // Source: content/de/principles.ts — "Unabhängig", verbatim.
             question: "Wie unabhängig ist die Beratung?",
             answer:
-              "Wir beraten frei von Versicherungsbindungen und entwickeln Lösungen, die sich an Ihren Bedürfnissen orientieren — nicht an Vorgaben einzelner Anbieter.",
+              "Wir beraten frei von Versicherungsbindungen und entwickeln Lösungen, die sich an Ihren Bedürfnissen orientieren und nicht an Vorgaben einzelner Anbieter.",
           },
           {
             // Source: content/de/deep/gesundheit.ts — "koordination", adapted.
@@ -214,7 +213,7 @@ export default function PrivatkundenPage() {
             // now matches the current five titles exactly.
             question: "Welche Versicherungsbereiche deckt neosura für Privatkunden ab?",
             answer:
-              "Krankenkasse, Wohnen & Eigentum, Fahrzeug & Reisen, Vorsorge sowie Rechtsschutz & Cyber — fünf Bereiche, die wir gemeinsam auf Ihre persönliche Situation abstimmen.",
+              "Krankenkasse, Wohnen & Eigentum, Fahrzeug & Reisen, Vorsorge sowie Rechtsschutz & Cyber: fünf Bereiche, die wir gemeinsam auf Ihre persönliche Situation abstimmen.",
           },
         ]}
         accent="purple"

@@ -176,7 +176,7 @@ export function AdvisoryConversion({
                   : "mx-auto mt-4 max-w-[52ch] text-[0.9rem] text-purple"
               }
             >
-              Vielen Dank. Ihre Anfrage wurde erfolgreich übermittelt — wir melden uns in Kürze bei Ihnen.
+              Vielen Dank. Ihre Anfrage wurde erfolgreich übermittelt. Wir melden uns in Kürze bei Ihnen.
             </p>
           )}
           {status === "error" && (

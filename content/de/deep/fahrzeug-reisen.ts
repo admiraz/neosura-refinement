@@ -41,7 +41,7 @@ export const fahrzeugReisenDeep = {
   ],
   problem: {
     statement:
-      "Ist das eigene Fahrzeug wirklich passend versichert — oder deckt die Police längst nicht mehr das, was heute zählt?",
+      "Ist das eigene Fahrzeug wirklich passend versichert, oder deckt die Police längst nicht mehr das, was heute zählt?",
     response: "Wir klären das gemeinsam.",
   },
   fahrzeugversicherung: {
@@ -49,7 +49,7 @@ export const fahrzeugReisenDeep = {
     heading: "Fahrzeugversicherung",
     paragraphs: [
       "Die Motorfahrzeug-Haftpflichtversicherung ist in der Schweiz gesetzlich vorgeschrieben: Wer ein Fahrzeug betreibt, muss dafür eine Haftpflichtversicherung abschliessen, die Schäden gegenüber Dritten abdeckt.",
-      "Teilkasko und Vollkasko sind freiwillige Ergänzungen, die zusätzlich das eigene Fahrzeug schützen — etwa gegen Diebstahl, Glasbruch, Naturereignisse oder selbstverschuldete Unfälle.",
+      "Teilkasko und Vollkasko sind freiwillige Ergänzungen, die zusätzlich das eigene Fahrzeug schützen, etwa gegen Diebstahl, Glasbruch, Naturereignisse oder selbstverschuldete Unfälle.",
     ],
     checklist: [
       "Gesetzlich vorgeschrieben. Deckt Schäden, die Sie mit dem Fahrzeug anderen zufügen.",
@@ -61,7 +61,7 @@ export const fahrzeugReisenDeep = {
     eyebrow: "Assistance",
     heading: "Assistance",
     paragraphs: [
-      "Assistance-Leistungen greifen bei Panne, Unfall oder Fahrzeugausfall — von der Pannenhilfe vor Ort bis zur Organisation von Ersatzmobilität.",
+      "Assistance-Leistungen greifen bei Panne, Unfall oder Fahrzeugausfall, von der Pannenhilfe vor Ort bis zur Organisation von Ersatzmobilität.",
       "Gerade bei regelmässiger Nutzung des Fahrzeugs im Alltag oder auf längeren Strecken macht eine passende Assistance-Deckung einen spürbaren Unterschied.",
     ],
     checklist: [
@@ -101,7 +101,7 @@ export const fahrzeugReisenDeep = {
   faq: [
     {
       question: "Ist eine Haftpflichtversicherung fürs Auto Pflicht?",
-      answer: "Ja. In der Schweiz ist die Motorfahrzeug-Haftpflichtversicherung gesetzlich vorgeschrieben — ohne sie darf kein Fahrzeug betrieben werden.",
+      answer: "Ja. In der Schweiz ist die Motorfahrzeug-Haftpflichtversicherung gesetzlich vorgeschrieben, ohne sie darf kein Fahrzeug betrieben werden.",
     },
     {
       question: "Brauche ich zusätzlich eine Kaskoversicherung?",
@@ -109,7 +109,7 @@ export const fahrzeugReisenDeep = {
     },
     {
       question: "Was deckt Assistance?",
-      answer: "Assistance-Leistungen unterstützen bei Panne oder Unfall — etwa mit Pannenhilfe vor Ort oder der Organisation von Ersatzmobilität.",
+      answer: "Assistance-Leistungen unterstützen bei Panne oder Unfall, etwa mit Pannenhilfe vor Ort oder der Organisation von Ersatzmobilität.",
     },
     {
       question: "Brauche ich eine Reiseversicherung zusätzlich zur Fahrzeugversicherung?",

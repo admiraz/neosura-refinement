@@ -6,7 +6,7 @@ export const principlesHeading = "Vier Prinzipien, die Vertrauen schaffen.";
 export const principles: PrincipleItem[] = [
   {
     title: "Unabhängig",
-    body: "Wir beraten frei von Versicherungsbindungen und entwickeln Lösungen, die sich an Ihren Bedürfnissen orientieren — nicht an Vorgaben einzelner Anbieter.",
+    body: "Wir beraten frei von Versicherungsbindungen und entwickeln Lösungen, die sich an Ihren Bedürfnissen orientieren und nicht an Vorgaben einzelner Anbieter.",
     icon: "compass",
   },
   {

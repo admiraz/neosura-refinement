@@ -7,7 +7,7 @@ import { LegalContent } from "@/components/legal/LegalContent";
 export const metadata: Metadata = pageMetadata({
   path: "/impressum",
   title: `${impressum.title} | ${siteMeta.name}`,
-  description: "Impressum von neosura — Firmenangaben, Kontakt, Handelsregistereintrag und Aufsichtsbehörde.",
+  description: "Impressum von neosura. Firmenangaben, Kontakt, Handelsregistereintrag und Aufsichtsbehörde.",
 });
 
 export default function ImpressumPage() {

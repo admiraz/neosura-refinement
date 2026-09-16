@@ -14,7 +14,7 @@
 export const gesundheitDeep = {
   problem: {
     statement:
-      "Passt die eigene Krankenversicherung wirklich noch zur aktuellen Lebenssituation — oder wurde sie einmal abgeschlossen und nie wieder angeschaut?",
+      "Passt die eigene Krankenversicherung wirklich noch zur aktuellen Lebenssituation, oder wurde sie einmal abgeschlossen und nie wieder angeschaut?",
     response: "Wir schauen genau hin.",
   },
   grundversicherung: {
@@ -35,7 +35,7 @@ export const gesundheitDeep = {
     intro:
       "Die Franchise ist der Betrag, den Sie pro Kalenderjahr selbst bezahlen, bevor die Grundversicherung Leistungen übernimmt. Die Höhe ist gesetzlich vorgegeben und frei wählbar.",
     caption:
-      "Eine passende Franchise besprechen wir gemeinsam anhand Ihrer persönlichen Situation — allgemeingültige Empfehlungen dazu geben wir bewusst nicht.",
+      "Eine passende Franchise besprechen wir gemeinsam anhand Ihrer persönlichen Situation. Allgemeingültige Empfehlungen dazu geben wir bewusst nicht.",
     sourceNote: "Beträge gemäss Bundesamt für Gesundheit (BAG).",
     rows: [
       { amount: "CHF 300", type: "Ordentliche Franchise" },
@@ -68,13 +68,13 @@ export const gesundheitDeep = {
     eyebrow: "Versorgung sinnvoll koordinieren",
     heading: "Versorgung sinnvoll koordinieren",
     paragraphs: [
-      "Grundversicherung, Zusatzversicherung und persönliche finanzielle Planbarkeit greifen nur dann sinnvoll ineinander, wenn sie gemeinsam betrachtet werden — nicht als einzelne, voneinander losgelöste Verträge.",
+      "Grundversicherung, Zusatzversicherung und persönliche finanzielle Planbarkeit greifen nur dann sinnvoll ineinander, wenn sie gemeinsam betrachtet werden und nicht als einzelne, voneinander losgelöste Verträge.",
       "Wir ordnen bestehende Policen, zeigen Überschneidungen und Lücken auf und entwickeln daraus eine Struktur, die zur aktuellen Lebenssituation passt.",
     ],
   },
   comparison: {
     heading: "Grundversicherung und Zusatzversicherung im Überblick",
-    intro: "Beide Versicherungsarten folgen unterschiedlichen gesetzlichen Grundlagen — ein Überblick.",
+    intro: "Beide Versicherungsarten folgen unterschiedlichen gesetzlichen Grundlagen: ein Überblick.",
     columnHeaders: ["Grundversicherung", "Zusatzversicherung"],
     rows: [
       { label: "Gesetzliche Grundlage", cells: ["Bundesgesetz über die Krankenversicherung (KVG)", "Versicherungsvertragsgesetz (VVG)"] },
@@ -88,7 +88,7 @@ export const gesundheitDeep = {
     steps: [
       { num: "01", title: "Analyse", body: "Wir prüfen Ihre bestehende Grund- und Zusatzversicherung sowie Ihre aktuelle Lebenssituation." },
       { num: "02", title: "Struktur", body: "Wir entwickeln eine Struktur, die Versorgung, Komfort und finanzielle Planbarkeit sinnvoll verbindet." },
-      { num: "03", title: "Begleitung", body: "Wir begleiten Sie auch bei Änderungen Ihrer Situation weiter — persönlich und zuverlässig." },
+      { num: "03", title: "Begleitung", body: "Wir begleiten Sie auch bei Änderungen Ihrer Situation weiter, persönlich und zuverlässig." },
     ],
   },
   faq: [

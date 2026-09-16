@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { businessServices } from "@/content/de/business";
-import { siteMeta } from "@/content/de/site";
 import { pageMetadata } from "@/lib/seo";
 import { inventarImmobilienDeep as deep } from "@/content/de/deep/inventar-immobilien";
 import { clientGuideTopicCta } from "@/content/de/clientGuide";
@@ -10,12 +8,11 @@ import { WohnenEditorialRow } from "@/components/service-deep/WohnenEditorialRow
 import { Container } from "@/components/ui/Container";
 import { CategoryFaq } from "@/components/category/CategoryFaq";
 
-const service = businessServices[3];
 
 export const metadata: Metadata = pageMetadata({
   path: "/unternehmen/sachversicherung",
-  title: `${service.title} | ${siteMeta.name}`,
-  description: service.body,
+  title: "Sach- & Betriebsunterbruchversicherung | neosura",
+  description: "Inventar, Waren, Maschinen und Betriebsunterbruch richtig versichert. Unabhängiger Vergleich für KMU.",
 });
 
 /** Phase 7N — HARD RULE: no old Phase-6 deep-page sections remain on this

@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import { businessServices } from "@/content/de/business";
-import { siteMeta } from "@/content/de/site";
 import { pageMetadata } from "@/lib/seo";
 import { cyberRechtsschutzDeep as deep } from "@/content/de/deep/cyber-rechtsschutz";
 import { clientGuideTopicCta } from "@/content/de/clientGuide";
@@ -9,12 +7,11 @@ import { BusinessCyberContent } from "@/components/service-deep/BusinessCyberCon
 import { WohnenEditorialRow } from "@/components/service-deep/WohnenEditorialRow";
 import { CategoryTopicCta } from "@/components/category/CategoryTopicCta";
 
-const service = businessServices[5];
 
 export const metadata: Metadata = pageMetadata({
   path: "/unternehmen/cyber-rechtsschutz",
-  title: `${service.title} | ${siteMeta.name}`,
-  description: service.body,
+  title: "Cyberversicherung & Rechtsschutz KMU | neosura",
+  description: "Cyberangriffe und Rechtsstreitigkeiten absichern: Deckungen für KMU im unabhängigen Vergleich.",
 });
 
 /** Phase 7P — HARD RULE: no old Phase-6/7M.0 scaffold sections remain on

@@ -30,7 +30,7 @@ export const betriebshaftpflichtDeep = {
   ],
   problem: {
     statement:
-      "Ist die bestehende Betriebshaftpflicht wirklich auf die aktuellen Risiken des Unternehmens abgestimmt — oder stammt sie noch aus der Gründungsphase?",
+      "Ist die bestehende Betriebshaftpflicht wirklich auf die aktuellen Risiken des Unternehmens abgestimmt, oder stammt sie noch aus der Gründungsphase?",
     response: "Wir prüfen es strukturiert.",
   },
   risiken: {
@@ -49,7 +49,7 @@ export const betriebshaftpflichtDeep = {
     eyebrow: "Finanzielle Folgen",
     heading: "Finanzielle Folgen",
     paragraphs: [
-      "Haftungsfälle können neben den direkten Schadenskosten auch Folgekosten auslösen — etwa durch Verfahrenskosten oder Betriebsunterbrüche im Zusammenhang mit der Schadensabwicklung.",
+      "Haftungsfälle können neben den direkten Schadenskosten auch Folgekosten auslösen, etwa durch Verfahrenskosten oder Betriebsunterbrüche im Zusammenhang mit der Schadensabwicklung.",
       "Eine strukturierte Absicherung reduziert nicht nur das finanzielle Risiko, sondern schafft auch Klarheit darüber, welche Fälle tatsächlich gedeckt sind.",
     ],
     checklist: [

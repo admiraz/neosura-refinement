@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
-import { businessIntro, businessServices } from "@/content/de/business";
 import { businessServiceExtras } from "@/content/de/serviceExtras";
 import { businessServiceVisuals } from "@/content/de/serviceVisuals";
 import { principles } from "@/content/de/principles";
 import { clientGuideFleet, clientGuideCyber, clientGuideAblauf, clientGuideBusinessHub, clientGuideHome, clientGuideTopicCta } from "@/content/de/clientGuide";
 import { betriebshaftpflichtDeep } from "@/content/de/deep/betriebshaftpflicht";
 import { gesundheitUnfallDeep } from "@/content/de/deep/gesundheit-unfall";
-import { siteMeta } from "@/content/de/site";
 import { pageMetadata } from "@/lib/seo";
 import { CategoryHero } from "@/components/category/CategoryHero";
 import { CategoryAdvantages } from "@/components/category/CategoryAdvantages";
@@ -18,11 +16,12 @@ import { CategoryNewsletter } from "@/components/category/CategoryNewsletter";
 import { CategoryTopicCta } from "@/components/category/CategoryTopicCta";
 import { CategoryServiceRow } from "@/components/category/CategoryServiceRow";
 import { Reveal } from "@/components/ui/Reveal";
+import { businessIntro, businessServices } from "@/content/de/business";
 
 export const metadata: Metadata = pageMetadata({
   path: "/unternehmen",
-  title: `${businessIntro.title} | ${siteMeta.name}`,
-  description: businessIntro.lead,
+  title: "Versicherungen für Unternehmen & KMU | neosura",
+  description: "Betriebshaftpflicht, KTG/UVG, BVG, Flotten und Cyber: Ein Broker für alle Firmenpolicen. Unabhängig und persönlich.",
 });
 
 export default function UnternehmenPage() {
@@ -81,15 +80,15 @@ export default function UnternehmenPage() {
         inset
         headingRest="Vorsorge und Schutz für"
         headingAccent="Ihre Mitarbeitenden"
-        paragraph="Unfallversicherung, Krankentaggeld und berufliche Vorsorge greifen an unterschiedlichen Punkten — erst im Zusammenspiel entsteht eine strukturierte Absicherung Ihrer Mitarbeitenden."
+        paragraph="Unfallversicherung, Krankentaggeld und berufliche Vorsorge greifen an unterschiedlichen Punkten. Erst im Zusammenspiel entsteht eine strukturierte Absicherung Ihrer Mitarbeitenden."
         items={[
           {
             title: "Berufliche Vorsorge (BVG)",
-            body: "Obligatorisch ab gesetzlich definiertem Mindesteinkommen — mit Gestaltungsspielraum über das gesetzliche Minimum hinaus.",
+            body: "Obligatorisch ab gesetzlich definiertem Mindesteinkommen, mit Gestaltungsspielraum über das gesetzliche Minimum hinaus.",
           },
           {
             title: "Unfallversicherung (UVG)",
-            body: "Berufsunfälle und Berufskrankheiten sind obligatorisch versichert — ab acht Wochenstunden zusätzlich auch Nichtberufsunfälle.",
+            body: "Berufsunfälle und Berufskrankheiten sind obligatorisch versichert. Ab acht Wochenstunden zusätzlich auch Nichtberufsunfälle.",
           },
           {
             title: "Krankentaggeld",

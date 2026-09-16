@@ -38,7 +38,7 @@ export const gesundheitUnfallDeep = {
   ],
   problem: {
     statement:
-      "Sind Ihre Mitarbeitenden bei Unfall und Krankheit wirklich lückenlos abgesichert — oder bestehen unbemerkte Lücken zwischen den einzelnen Policen?",
+      "Sind Ihre Mitarbeitenden bei Unfall und Krankheit wirklich lückenlos abgesichert, oder bestehen unbemerkte Lücken zwischen den einzelnen Policen?",
     response: "Wir schliessen sie.",
   },
   uvg: {
@@ -91,7 +91,7 @@ export const gesundheitUnfallDeep = {
     eyebrow: "Mitarbeitendenabsicherung als Ganzes",
     heading: "Mitarbeitendenabsicherung als Ganzes",
     paragraphs: [
-      "Unfallversicherung und Krankentaggeld greifen an unterschiedlichen Punkten — erst im Zusammenspiel entsteht eine lückenlose Absicherung der Mitarbeitenden.",
+      "Unfallversicherung und Krankentaggeld greifen an unterschiedlichen Punkten. Erst im Zusammenspiel entsteht eine lückenlose Absicherung der Mitarbeitenden.",
     ],
   },
   comparison: {

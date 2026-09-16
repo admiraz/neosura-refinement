@@ -27,7 +27,7 @@ export const rechtCyberDeep = {
     },
   ],
   problem: {
-    statement: "Wer hilft im Ernstfall wirklich weiter — bei einem rechtlichen Streit ebenso wie bei einem digitalen Vorfall?",
+    statement: "Wer hilft im Ernstfall wirklich weiter, bei einem rechtlichen Streit ebenso wie bei einem digitalen Vorfall?",
     response: "Wir koordinieren beides.",
   },
   rechtsschutz: {
@@ -58,7 +58,7 @@ export const rechtCyberDeep = {
     eyebrow: "Professionelle Begleitung im Ernstfall",
     heading: "Professionelle Begleitung im Ernstfall",
     paragraphs: [
-      "Im entscheidenden Moment zählt nicht nur die richtige Versicherung, sondern auch die richtige Begleitung — schnell, koordiniert und mit klarem Vorgehen.",
+      "Im entscheidenden Moment zählt nicht nur die richtige Versicherung, sondern auch die richtige Begleitung: schnell, koordiniert und mit klarem Vorgehen.",
     ],
   },
   comparison: {
@@ -89,11 +89,11 @@ export const rechtCyberDeep = {
     },
     {
       question: "Wie hängen Rechtsschutz und Cyber-Absicherung zusammen?",
-      answer: "Ein digitaler Vorfall kann rechtliche Schritte erfordern — genau an dieser Schnittstelle setzt eine koordinierte Absicherung an.",
+      answer: "Ein digitaler Vorfall kann rechtliche Schritte erfordern. Genau an dieser Schnittstelle setzt eine koordinierte Absicherung an.",
     },
     {
       question: "Was passiert im Ernstfall?",
-      answer: "Wir begleiten Sie professionell durch den gesamten Prozess — von der ersten Einschätzung bis zur Lösung.",
+      answer: "Wir begleiten Sie professionell durch den gesamten Prozess, von der ersten Einschätzung bis zur Lösung.",
     },
     {
       question: "Wie unterstützt neosura mich?",

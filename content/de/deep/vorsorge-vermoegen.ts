@@ -47,7 +47,7 @@ export const vorsorgeVermoegenDeep = {
   ],
   problem: {
     statement:
-      "Wie gut ist die eigene Vorsorge- und Vermögenssituation heute wirklich bekannt — jenseits der jährlichen Pensionskassenübersicht?",
+      "Wie gut ist die eigene Vorsorge- und Vermögenssituation heute wirklich bekannt, jenseits der jährlichen Pensionskassenübersicht?",
     response: "Wir schaffen Klarheit.",
   },
   system: {
@@ -114,7 +114,7 @@ export const vorsorgeVermoegenDeep = {
     },
     {
       question: "Ist die berufliche Vorsorge für alle Arbeitnehmenden obligatorisch?",
-      answer: "Die berufliche Vorsorge ist für Arbeitnehmende ab einem gesetzlich definierten Mindesteinkommen obligatorisch. Die genaue Schwelle wird periodisch angepasst — wir prüfen Ihre individuelle Situation gemeinsam.",
+      answer: "Die berufliche Vorsorge ist für Arbeitnehmende ab einem gesetzlich definierten Mindesteinkommen obligatorisch. Die genaue Schwelle wird periodisch angepasst. Wir prüfen Ihre individuelle Situation gemeinsam.",
     },
     {
       question: "Was ist der Unterschied zwischen Umlage- und Kapitaldeckungsverfahren?",
@@ -122,7 +122,7 @@ export const vorsorgeVermoegenDeep = {
     },
     {
       question: "Wann sollte ich mich mit Vermögensaufbau beschäftigen?",
-      answer: "Je früher, desto mehr Zeit steht für den Aufbau zur Verfügung — sinnvoll ist eine Auseinandersetzung unabhängig vom Alter, sobald eine stabile finanzielle Basis besteht.",
+      answer: "Je früher, desto mehr Zeit steht für den Aufbau zur Verfügung. Sinnvoll ist eine Auseinandersetzung unabhängig vom Alter, sobald eine stabile finanzielle Basis besteht.",
     },
     {
       question: "Wie unterstützt neosura mich bei der Vorsorgeplanung?",

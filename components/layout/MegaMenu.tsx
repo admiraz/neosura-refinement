@@ -12,7 +12,7 @@ const audienceVisual: Record<string, { src: string; alt: string; blurb: string }
     src: "/images/bear-pointing.png",
     alt: "",
     blurb:
-      "Private Versicherungslösungen für Gesundheit, Wohnen, Mobilität und Vorsorge — individuell abgestimmt auf Ihre Lebenssituation.",
+      "Private Versicherungslösungen für Gesundheit, Wohnen, Mobilität und Vorsorge, individuell abgestimmt auf Ihre Lebenssituation.",
   },
   Unternehmen: {
     src: "/images/bear-trust.webp",
@@ -158,7 +158,7 @@ export function MegaMenu({ item, onMouseEnter, onMouseLeave, id }: MegaMenuProps
             </div>
           </div>
 
-          <nav aria-label={`${rendered!.label} — Übersicht`} className="border-l border-line p-7">
+          <nav aria-label={`${rendered!.label}: Übersicht`} className="border-l border-line p-7">
             <ul className="flex flex-col gap-2.5">
               {colB.map((child, i) => (
                 <ServiceGroup
@@ -173,7 +173,7 @@ export function MegaMenu({ item, onMouseEnter, onMouseLeave, id }: MegaMenuProps
             </ul>
           </nav>
 
-          <nav aria-label={`${rendered!.label} — Weitere`} className="flex flex-col justify-between border-l border-line bg-paper-2/50 p-7">
+          <nav aria-label={`${rendered!.label}: Weitere`} className="flex flex-col justify-between border-l border-line bg-paper-2/50 p-7">
             <ul className="flex flex-col gap-2.5">
               {colC.map((child, i) => (
                 <ServiceGroup
