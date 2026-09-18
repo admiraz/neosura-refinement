@@ -6,6 +6,8 @@ export const documentsContent = {
   accept: [".pdf", ".jpg", ".jpeg", ".png"],
   acceptAttr: ".pdf,.jpg,.jpeg,.png",
   maxSizeMb: 10,
+  /** Client review 2 §3 — exact client wording for the upload hint. */
+  uploadHint: "mehrere Dateien möglich, max. 10 MB pro Datei",
   submitLabel: "Unterlagen senden",
   /** Shown only once the server has confirmed the email was actually
    * delivered (see app/api/documents/route.ts) — never on a bare 200. */
@@ -18,23 +20,18 @@ export const documentsContent = {
    * here too as the client-side fallback if the response body is
    * unreadable for any reason. */
   deliveryFailureMessage:
-    "Die Übermittlung ist derzeit nicht möglich. Bitte senden Sie Ihre Unterlagen direkt an info@neosura.ch.",
+    "Die Übermittlung konnte leider nicht abgeschlossen werden. Bitte versuchen Sie es später erneut.",
 };
 
-/** Fills the desktop left column meaningfully instead of mascot artwork —
- * derived only from existing Process/Documents wording, no invented
- * promises or response-time claims. */
-export const documentsHelperSteps = [
-  { num: "01", label: "Unterlagen hochladen" },
-  { num: "02", label: "Situation analysieren" },
-  { num: "03", label: "Persönliche Rückmeldung" },
-];
-
-/** Shorter labels for the compact mobile block above the audience tabs. */
-export const documentsHelperStepsCompact = [
+/** Client review 2 §1 — ONE step strip for the whole upload flow. Replaces
+ * the previous pair (a desktop-only list "Unterlagen hochladen / Situation
+ * analysieren / Persönliche Rückmeldung" and a mobile-only row "Upload /
+ * Analyse / Begleitung"), which read as two competing step systems. Labels
+ * are the client's exact wording. */
+export const documentsSteps = [
   { num: "01", label: "Upload" },
   { num: "02", label: "Analyse" },
-  { num: "03", label: "Begleitung" },
+  { num: "03", label: "Rückmeldung" },
 ];
 
 export interface DocumentFormField {
@@ -49,6 +46,18 @@ export interface DocumentFormField {
 export const privateDocumentFields: DocumentFormField[] = [
   { name: "vorname", label: "Vorname", type: "text", required: true, autoComplete: "given-name" },
   { name: "nachname", label: "Nachname", type: "text", required: true, autoComplete: "family-name" },
+  { name: "email", label: "E-Mail", type: "email", required: true, autoComplete: "email" },
+  { name: "telefon", label: "Telefon", type: "tel", required: false, autoComplete: "tel" },
+];
+
+/** Client review 2 §2 — the upload form's own business fields: a mandatory
+ * field labelled exactly «Firma» on the Unternehmen tab, none on the
+ * Privatpersonen tab. Kept separate from `businessDocumentFields` below,
+ * which other pages (the /unternehmen hero form, ServiceInquiry) still use
+ * unchanged. */
+export const uploadBusinessFields: DocumentFormField[] = [
+  { name: "firma", label: "Firma", type: "text", required: true, autoComplete: "organization" },
+  { name: "ansprechpartner", label: "Ansprechpartner", type: "text", required: true, autoComplete: "name" },
   { name: "email", label: "E-Mail", type: "email", required: true, autoComplete: "email" },
   { name: "telefon", label: "Telefon", type: "tel", required: false, autoComplete: "tel" },
 ];

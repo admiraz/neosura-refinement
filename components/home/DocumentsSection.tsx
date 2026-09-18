@@ -4,10 +4,9 @@ import Link from "next/link";
 import { useId, useRef, useState, type DragEvent, type FormEvent, type ReactNode } from "react";
 import {
   documentsContent,
-  documentsHelperSteps,
-  documentsHelperStepsCompact,
+  documentsSteps,
   privateDocumentFields,
-  businessDocumentFields,
+  uploadBusinessFields,
   type DocumentFormField,
 } from "@/content/de/documents";
 import type { Audience } from "@/content/de/types";
@@ -104,7 +103,7 @@ export function DocumentsSection({
   const fileInputRef = useRef<HTMLInputElement>(null);
   const formIdPrefix = useId();
 
-  const fields = audience === "privat" ? privateDocumentFields : businessDocumentFields;
+  const fields = audience === "privat" ? privateDocumentFields : uploadBusinessFields;
 
   function addFiles(list: FileList | null) {
     if (!list) return;
@@ -169,29 +168,24 @@ export function DocumentsSection({
 
             {intro ? <div className={page ? "mt-7" : "mt-8"}>{intro}</div> : null}
 
-            {/* Desktop: source-grounded 3-point block fills the left column */}
-            <div className="mt-10 hidden flex-col lg:flex">
-              {documentsHelperSteps.map((step, i) => (
-                <div
-                  key={step.num}
-                  className={cn("border-t border-line-soft pt-5", i > 0 && "mt-7")}
-                >
-                  <span className="text-[0.78rem] tracking-[0.14em] text-muted">{step.num}</span>
-                  <p className="mt-2 text-[1.05rem] text-ink">{step.label}</p>
-                </div>
+            {/* Client review 2 §1 — ONE step strip. Previously a desktop-only
+                list and a separate mobile-only row carried different wording;
+                this single horizontal strip serves both, keeping the desktop
+                hairline treatment. */}
+            <ul className="mt-10 grid grid-cols-3 gap-3 sm:gap-6">
+              {documentsSteps.map((step) => (
+                <li key={step.num} className="border-t border-line-soft pt-4 sm:pt-5">
+                  <span className="block text-[0.72rem] tracking-[0.14em] text-muted sm:text-[0.78rem]">
+                    {step.num}
+                  </span>
+                  <span className="mt-1.5 block text-[0.9rem] leading-snug text-ink sm:mt-2 sm:text-[1.05rem]">
+                    {step.label}
+                  </span>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
 
-          {/* Mobile: compact 3-step block above the audience tabs */}
-          <div className="mt-8 flex items-center gap-6 lg:hidden">
-            {documentsHelperStepsCompact.map((step) => (
-              <div key={step.num} className="flex items-center gap-2">
-                <span className="text-[0.75rem] tracking-[0.1em] text-muted">{step.num}</span>
-                <span className="text-[0.85rem] text-ink-soft">{step.label}</span>
-              </div>
-            ))}
-          </div>
 
           <div className="mt-10 lg:mt-0">
             <div role="tablist" aria-label="Zielgruppe wählen" className="flex border-b border-line">
@@ -246,8 +240,9 @@ export function DocumentsSection({
                 >
                   <span className="text-[0.95rem] text-ink">Dateien hierher ziehen oder klicken zum Auswählen</span>
                   <span className="mt-2 text-[0.8rem] text-muted">
-                    {documentsContent.accept.join(", ")} · max. {documentsContent.maxSizeMb} MB
+                    {documentsContent.accept.join(", ")}
                   </span>
+                  <span className="mt-1 text-[0.8rem] text-muted">{documentsContent.uploadHint}</span>
                   <input
                     ref={fileInputRef}
                     type="file"

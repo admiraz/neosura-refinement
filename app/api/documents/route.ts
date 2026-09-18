@@ -4,20 +4,40 @@ import { getResendClient } from "@/lib/email/resend";
 const ACCEPTED_TYPES = ["application/pdf", "image/jpeg", "image/png"];
 const ACCEPTED_EXTENSIONS = [".pdf", ".jpg", ".jpeg", ".png"];
 const MAX_FILE_SIZE_BYTES = 10 * 1024 * 1024;
-/** Safety margin under typical provider message-size ceilings (Resend
- * caps a full request around 40MB); keeps a healthy buffer for headers/
- * body/base64 overhead on top of the raw file bytes. */
-const MAX_TOTAL_ATTACHMENT_BYTES = 20 * 1024 * 1024;
+/** Transport ceiling, NOT a form rule. The visible, client-approved rule is
+ * per file ("mehrere Dateien möglich, max. 10 MB pro Datei"); the previous
+ * 20MB total was an arbitrary self-imposed margin that contradicted it (three
+ * 9MB files were rejected although each was under 10MB).
+ *
+ * What genuinely constrains a submission today is the temporary
+ * email-attachment transport: Resend accepts at most 40MB per email measured
+ * AFTER base64 encoding, which inflates bytes by ~4/3. 28MB of raw files
+ * encodes to ~37.5MB and still leaves room for headers and the body. This
+ * limit disappears with the email transport once the production upload
+ * architecture is decided. */
+const MAX_TOTAL_ATTACHMENT_BYTES = 28 * 1024 * 1024;
+/** Rejected before the request body is buffered: route handlers have no
+ * default body-size limit, and every file is held in memory here, so an
+ * oversized POST would otherwise be read in full before validation runs.
+ * Sits above the attachment ceiling to allow multipart overhead and fields. */
+const MAX_REQUEST_BYTES = 30 * 1024 * 1024;
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const MAX_TEXT_FIELD_LENGTH = 200;
 const MAX_MESSAGE_LENGTH = 5000;
 
 const FALLBACK_MESSAGE =
-  "Die Übermittlung ist derzeit nicht möglich. Bitte senden Sie Ihre Unterlagen direkt an info@neosura.ch.";
+  "Die Übermittlung konnte leider nicht abgeschlossen werden. Bitte versuchen Sie es später erneut.";
+
+/** Shown only when one submission exceeds what the current transport can
+ * carry — deliberately phrased as a limit of this one transmission, never as
+ * a per-file rule, so it cannot contradict the visible hint. */
+const TOO_LARGE_MESSAGE =
+  "Diese Übermittlung ist insgesamt zu gross. Bitte teilen Sie die Dateien auf zwei Übermittlungen auf.";
 
 const FIELD_LABELS: Record<string, string> = {
   vorname: "Vorname",
   nachname: "Nachname",
+  firma: "Firma",
   firmenname: "Firmenname",
   ansprechpartner: "Ansprechpartner",
   email: "E-Mail",
@@ -52,6 +72,11 @@ function sanitizeFilename(name: string): string {
  * true` with the same fallback-email message so the UI never claims a
  * delivery that didn't happen. */
 export async function POST(request: Request) {
+  const declaredSize = Number(request.headers.get("content-length") ?? 0);
+  if (declaredSize > MAX_REQUEST_BYTES) {
+    return NextResponse.json({ ok: false, message: TOO_LARGE_MESSAGE }, { status: 413 });
+  }
+
   let formData: FormData;
   try {
     formData = await request.formData();
@@ -65,7 +90,12 @@ export async function POST(request: Request) {
   }
 
   const errors: Record<string, string> = {};
-  const requiredFields = formType === "privat" ? ["vorname", "nachname", "email"] : ["firmenname", "ansprechpartner", "email"];
+  // Client review 2 §2 — the upload form posts «Firma» (`firma`); the
+  // /unternehmen hero form and ServiceInquiry still post `firmenname`.
+  // Whichever the submission carries is the required company field.
+  const companyField = formData.has("firma") ? "firma" : "firmenname";
+  const requiredFields =
+    formType === "privat" ? ["vorname", "nachname", "email"] : [companyField, "ansprechpartner", "email"];
 
   for (const field of requiredFields) {
     const value = formData.get(field);
@@ -103,7 +133,7 @@ export async function POST(request: Request) {
     totalSize += file.size;
   }
   if (!errors.dokumente && totalSize > MAX_TOTAL_ATTACHMENT_BYTES) {
-    errors.dokumente = "Die Gesamtgrösse aller Dateien überschreitet 20 MB. Bitte reduzieren Sie die Anzahl der Anhänge.";
+    errors.dokumente = TOO_LARGE_MESSAGE;
   }
 
   if (Object.keys(errors).length > 0) {
@@ -124,7 +154,7 @@ export async function POST(request: Request) {
   const relevantFields =
     formType === "privat"
       ? ["vorname", "nachname", "email", "telefon", "nachricht"]
-      : ["firmenname", "ansprechpartner", "email", "telefon", "nachricht"];
+      : [companyField, "ansprechpartner", "email", "telefon", "nachricht"];
 
   // Optional service-context, sent only by ServiceInquiry (the compact
   // per-page form) — absent entirely on the existing Dokumente upload
